@@ -45,16 +45,16 @@ function Forcast(props) {
 
   return (
     <div className="forecast">
-      <div className="forecast-icon">
+      {/* <div className="forecast-icon">
         <ReactAnimatedWeather
           icon={props.icon}
           color={defaults.color}
           size={defaults.size}
           animate={defaults.animate}
         />
-      </div>
+      </div> */}
       <div className="today-weather">
-        <h3>{props.weather}</h3>
+        {/* <h3>{props.weather}</h3> */}
         <div className="search-box">
           <input
             type="text"
@@ -76,13 +76,17 @@ function Forcast(props) {
             <div>
               {" "}
               <li className="cityHead">
-                <p className="city">
-                  {weather.name}, {weather.sys.country}
-                </p>
                 <img
-                  className="temp"
-                  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
-                />
+                    className="temp"
+                    src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+                  />
+                  <p className="city">
+                    {weather.name}, {weather.sys.country}
+                  </p>
+
+                  <p className="today">
+                    Today
+                  </p>
               </li>
               <li>
                 Temperature{" "}

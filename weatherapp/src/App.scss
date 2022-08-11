@@ -78,7 +78,9 @@ img {
   padding: 30px 0;
   width: 100%;
   display: flex;
-  justify-content: space-between; 
+  justify-content: flex-end; 
+  position: fixed;
+  bottom: 0;
 
   @include devices(tablet) {
     justify-content: space-around;
@@ -99,30 +101,6 @@ img {
     @include devices(mobile) {
       padding-left: 20px;
     }
-  }
-
-  .temperature {
-    position: relative;
-    padding-right: 30px;
-
-    p {
-      font-family: "Raleway", sans-serif;
-      font-size: 80px;
-      font-weight: 100;
-
-      @include devices(mobile) {
-        font-size: 32px;
-      }
-
-      span {
-        font-size: 50px;
-        font-weight: 200;
-
-        @include devices(mobile) {
-          font-size: 32px;
-        }
-      }
-   }
   }
 
   .current-time {
@@ -163,12 +141,40 @@ body {
 
 .initialSearch {
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 10px 0 20px 10px;
+
+  .temperature {
+    position: relative;
+    padding-right: 30px;
+
+    p {
+      font-family: "Raleway", sans-serif;
+      font-size: 80px;
+      font-weight: 100;
+      color: #fff;
+
+      @include devices(mobile) {
+        font-size: 32px;
+      }
+
+      span {
+        font-size: 50px;
+        font-weight: 200;
+
+        @include devices(mobile) {
+          font-size: 32px;
+        }
+      }
+    }
+  }
 
   .title {
-    float: right;
     font-family: "Oxygen", sans-serif;
-    padding: 30px 30px 0 0;
+    //padding: 30px 30px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     h2 {
       color: #fff;
@@ -176,12 +182,33 @@ body {
       font-weight: bold;
     }
 
-    h3 {
-      font-size: 25px;
+    sup {
+      font-size: 22px;
       font-weight: bold;
       color: #eee;
       margin-top: 0px;
       text-align: right;
+      position: relative;
+      top: 12px;
+    }
+  }
+
+  .mb-icon {
+    height: 100%;
+    top: 34%;
+    left: 36%;
+    z-index: 1;
+
+    canvas {
+      height: 80px;
+      padding: 20px 20px 0 0;
+    }
+
+    p {
+      color: white;
+      position: relative;
+      font-size: 14px;
+      display: none;
     }
   }
 }
@@ -215,9 +242,11 @@ body {
   }
 
   .today-weather {
+    padding-bottom: 40px;
+
     h3 {
       text-transform: capitalize;
-      font-size: 50px;
+      font-size: 40px;
       color: #fff;
       width: 80%;
       margin: 0 auto 10px;
@@ -228,6 +257,18 @@ body {
 
     ul {
       li {
+        width: 74%;
+        margin: 0 auto;
+        line-height: 39px;
+        border-width: thin;
+        border-bottom: 1px solid #cdc0c0;
+        color: #eee;
+        font-weight: 600;
+        padding: 0 0 15px 0;
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+
         @include devices(tablet) {
           font-size: 23px;
           width: 85%;
@@ -239,18 +280,16 @@ body {
           display: flex;
           align-items: center;
           justify-content: center;
+          flex-direction: column;
+
+          img {
+            height: 110px;
+          }
+
+          .today {
+            padding-top: 10px;
+          }
         }
-        width: 74%;
-        margin: 0 auto;
-        line-height: 39px;
-        border-width: thin;
-        border-bottom: 1px solid #cdc0c0;
-        color: #eee;
-        font-weight: 600;
-        padding: 15px 0;
-        display: flex;
-        justify-content: space-between;
-        font-size: 20px;
 
         &:first-child,
         &:last-child {
@@ -308,17 +347,3 @@ body {
     }
   }
 }
-
-// .mb-icon {
-//   height: 100%;
-//   position: absolute;
-//   top: 34%;
-//   left: 36%;
-//   z-index: 1;
-//   display: none;
-// }
-// .mb-icon p {
-//   color: white;
-//   position: relative;
-//   font-size: 25px;
-// }

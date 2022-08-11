@@ -67,9 +67,9 @@ class Weather extends React.Component {
         })
         .catch((err) => {
           //If user denied location service then standard location weather will le shown on basis of latitude & latitude.
-          this.getWeather(28.67, 77.22);
+          this.getWeather(49.246, -123.116);
           alert(
-            "You have disabled location service. Allow 'This APP' to access your location. Your current location will be used for calculating Real time weather."
+            "You have disabled location service. Default location is Vancouver,CA. To get your current weather report, make sure to enable the location."
           );
         });
     } else {
@@ -146,22 +146,29 @@ class Weather extends React.Component {
     if (this.state.temperatureC) {
       return (
         <React.Fragment>
-          <div className="initialSearch">
-            <div className="title">
-              <h2>{this.state.city}</h2>
-              <h3>{this.state.country}</h3>
+            <div className="initialSearch">
+              <div className="title">
+                <div className="mb-icon">
+                  {" "}
+                  <ReactAnimatedWeather
+                    icon={this.state.icon}
+                    color={defaults.color}
+                    size={defaults.size}
+                    animate={defaults.animate}
+                  />
+                  <p>{this.state.main}</p>
+                </div>
+                <h2>{this.state.city}</h2>
+                <sup>{this.state.country}</sup>
+              </div>
+              <div className="temperature">
+                <p>
+                  {this.state.temperatureC}°<span>C</span>
+                </p>
+                {/* <span className="slash">/</span>
+                {this.state.temperatureF} &deg;F */}
+              </div>
             </div>
-            {/* <div className="mb-icon">
-              {" "}
-              <ReactAnimatedWeather
-                icon={this.state.icon}
-                color={defaults.color}
-                size={defaults.size}
-                animate={defaults.animate}
-              />
-              <p>{this.state.main}</p>
-            </div> */}
-          </div>
           <Forcast icon={this.state.icon} weather={this.state.main} />
           <div className="date-time">
               <div className="dmy">
@@ -171,13 +178,7 @@ class Weather extends React.Component {
                 </div>
                 <div className="current-date">{dateBuilder(new Date())}</div>
               </div>
-              <div className="temperature">
-                <p>
-                  {this.state.temperatureC}°<span>C</span>
-                </p>
-                {/* <span className="slash">/</span>
-                {this.state.temperatureF} &deg;F */}
-              </div>
+              
             </div>
         </React.Fragment>
       );
